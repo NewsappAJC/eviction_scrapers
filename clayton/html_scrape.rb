@@ -12,8 +12,8 @@ $most_recent_directory = ''
 headers = ['case_number','status']
 # make time stamp based directories
 if File.join(File.dirname(__FILE__),Dir.glob("20*")).length > 2
-    $most_recent_directory = Evictions::get_most_recent_directory(county)
-    if (Time.now-Time.local($most_recent_directory.split("/").last.split("_").first,$most_recent_directory.split("_")[1],$most_recent_directory.split("_")[2]))/(60*60*24) < 10
+    $most_recent_directory = Evictions::Utilities.get_most_recent_directory(county)
+    if (Time.now-Time.local($most_recent_directory.split("/").last.split("_").first,$most_recent_directory.split("/").last.split("_")[1].to_i,$most_recent_directory.split("/").last.split("_")[2].to_i))/(60*60*24) < 10
         $now_time = $most_recent_directory
     else
         $now_time = Evictions::Utilities.set_up_files_and_folders(headers,county)
@@ -35,7 +35,8 @@ Evictions::Utilities.reset_connection!
 success = true
 cached_files=Dir.glob(File.join(File.dirname(__FILE__), $now_time, "case_cache","*.html"))
 
-for year in ($most_recent_directory.split("_")[0].split("/")[-1].to_i..Time.now.year)
+#for year in ($most_recent_directory.split("_")[0].split("/")[-1].to_i..Time.now.year)
+for year in ['2017',]
     last_month = 12
     if year.to_i == Time.now.year
       if Time.now.day > 5
