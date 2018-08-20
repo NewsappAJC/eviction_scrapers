@@ -7,7 +7,7 @@ The programs scrape eviction court cases from Clayton, Cobb, DeKalb, Fulton and 
 
 One could quite easily repurpose these to scrape other kinds of cases. Just change the search criteria.
 
-For what it is worth, I doubt anyone is going to really operate these. But, if they are interested, I would recommend augumenting this code with code from my repo "ruby_scraping". In there, you'll find folders ending in "magistrate" for each of these counties. In those, you'll find files labeled something like "extract_events" or "extract_docket_info" which would complete the picture by extracting additional information on what happened in each case.
+For what it is worth, I doubt anyone is going to really operate these. But, if they are interested, I would recommend augumenting this code with code from my repo "ruby_scraping". In there, you'll find folders ending in "magistrate" for each of these counties. In those, you'll find files labeled something like "extract_events" or "extract_docket_info" which would complete the picture by extracting additional information on what happened in each case. However, you'll need to basically rewrite parts of those to point toward the HTML files that this set of programs generates, because those files currently point towards HTML that is stored in MySQL, if I recall correctly.
 
 Additionally, if one is interested and doesn't have much experience in scraping, I'd say that these are probably the most principled scrapers I made at the AJC. They incorporate everything I'd learned up to this point about scraping. It does things like:
 
